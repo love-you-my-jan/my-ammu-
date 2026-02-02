@@ -3,436 +3,921 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>রাইসার মায়ের স্মরণে - ভালোবাসার চিরস্থায়ী বন্ধন</title>
+    <title>রাইসার মায়ের স্মরণে - চিরস্মরণীয় ভালোবাসা</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@300;400;600;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
     
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bg-dark: #0a0b10;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --text-main: #ececec;
-            --text-muted: #a0a0a0;
+            --midnight: #0a0c10;
+            --deep-blue: #121520;
             --gold: #d4af37;
-            --rose: #d48ba8;
-            --sky: #8ba8d4;
+            --soft-gold: #e5c76b;
+            --rose: #c9a0b0;
+            --light: #f0e6d2;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Hind Siliguri', sans-serif;
+            background: var(--midnight);
+            color: var(--light);
+            font-family: 'Noto Serif Bengali', serif;
             overflow-x: hidden;
-            min-height: 100vh;
+            line-height: 1.8;
         }
 
-        /* Animated Background */
-        .stars {
+        /* ==========================================
+           PREMIUM BACKGROUND EFFECTS
+        ========================================== */
+        .universe {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 50% 100%, #1a1f2e 0%, #000000 100%);
+            z-index: -2;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
             overflow: hidden;
         }
-        
+
+        /* Realistic Stars */
         .star {
             position: absolute;
             background: white;
             border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px white; }
+        }
+
+        /* Shooting Stars */
+        .shooting-star {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, white, transparent);
+            animation: shoot 3s linear infinite;
             opacity: 0;
-            animation: floatUp linear infinite;
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            20% { opacity: 0.8; }
-            80% { opacity: 0.5; }
-            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        @keyframes shoot {
+            0% { transform: translateX(-100px) rotate(-45deg); opacity: 1; }
+            100% { transform: translateX(100vw) rotate(-45deg); opacity: 0; }
         }
 
-        /* Header */
-        header {
+        /* ==========================================
+           ETERNAL FLAME SECTION
+        ========================================== */
+        .flame-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 100;
             text-align: center;
-            padding: 80px 20px 30px;
-            animation: fadeIn 1.5s ease;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-            line-height: 1.2;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            border-bottom: 1px solid var(--glass-border);
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-
-        /* Filters */
-        .filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 40px 0;
-            padding: 0 20px;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 1px solid var(--glass-border);
-            color: var(--text-muted);
-            padding: 10px 25px;
-            border-radius: 30px;
             cursor: pointer;
-            transition: 0.3s;
-            font-size: 1rem;
-            font-family: 'Hind Siliguri', sans-serif;
+            transition: transform 0.3s ease;
         }
 
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--gold);
-            color: #000;
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        .flame-container:hover {
+            transform: scale(1.1);
         }
 
-        /* Grid Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .candle {
+            width: 60px;
+            height: 100px;
+            position: relative;
+        }
+
+        .wax {
+            width: 100%;
+            height: 80%;
+            background: linear-gradient(90deg, #f5f5f5, #e0e0e0, #f5f5f5);
+            border-radius: 10px;
+            position: absolute;
+            bottom: 0;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .flame {
+            width: 30px;
+            height: 50px;
+            background: linear-gradient(to top, #ff6b35, #f7c600, #fff);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: flicker 0.1s ease-in-out infinite alternate;
+            box-shadow: 
+                0 0 20px #ff6b35,
+                0 0 40px #f7c600,
+                0 0 60px rgba(255, 107, 53, 0.5);
+            filter: blur(0.5px);
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+            100% { transform: translateX(-50%) scale(1.05) rotate(2deg); }
+        }
+
+        .flame-text {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--gold);
+            opacity: 0.8;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+        }
+
+        /* ==========================================
+           HERO SECTION WITH PARALLAX
+        ========================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
             padding: 20px;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
+        .angel-wings {
+            position: absolute;
+            width: 100%;
+            max-width: 800px;
+            opacity: 0.15;
+            animation: breathe 4s ease-in-out infinite;
+            pointer-events: none;
         }
 
-        /* Card Style */
-        .card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 30px;
-            border-radius: 16px;
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 0.15; }
+            50% { transform: scale(1.05); opacity: 0.2; }
+        }
+
+        .hero-content {
+            z-index: 10;
+            max-width: 900px;
+        }
+
+        .memorial-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        h1 .highlight {
+            color: var(--gold);
+            font-weight: 600;
+            display: block;
+            font-size: 1.3em;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--rose);
+            margin-bottom: 40px;
+            font-style: italic;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .dates {
+            font-family: 'Cinzel', serif;
+            color: var(--soft-gold);
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            animation: bounce 2s infinite;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        /* ==========================================
+           MEMORY BOOK SECTION
+        ========================================== */
+        .memory-section {
+            padding: 100px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
             position: relative;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(12px);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: slideUp 0.6s forwards;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 15px auto 0;
+        }
+
+        .section-desc {
+            color: var(--rose);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
         }
 
-        @keyframes slideUp {
-            to { opacity: 1; transform: translateY(0); }
+        .tab {
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--light);
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Noto Serif Bengali', serif;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        .tab::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .tab:hover::before {
+            left: 100%;
+        }
+
+        .tab.active, .tab:hover {
             border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Premium Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+            perspective: 1000px;
+        }
+
+        .memory-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .memory-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--rose), var(--gold));
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .memory-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
         }
 
         .card-icon {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            opacity: 0.8;
-        }
-        
-        .quote {
-            font-size: 1.15rem;
-            line-height: 1.8;
+            font-size: 2rem;
             margin-bottom: 20px;
-            font-weight: 400;
+            opacity: 0.8;
+            transition: transform 0.3s ease;
         }
 
-        .card-footer {
+        .memory-card:hover .card-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .card-content {
+            font-size: 1.15rem;
+            line-height: 2;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 15px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: var(--rose);
         }
 
-        .copy-btn {
+        .card-tag {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .action-btn {
             background: none;
             border: none;
-            color: var(--text-muted);
+            color: var(--light);
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            opacity: 0.6;
         }
-        .copy-btn:hover { color: var(--gold); }
 
-        /* Color Themes per Category */
-        .theme-ma .card-icon { color: var(--gold); }
-        .theme-ma-meye .card-icon { color: var(--rose); }
-        .theme-sad .card-icon { color: var(--sky); }
-
-        /* Load More Button */
-        .load-more-container {
-            text-align: center;
-            margin: 60px 0;
-        }
-        
-        .load-btn {
-            background: transparent;
-            border: 1px solid var(--gold);
+        .action-btn:hover {
+            opacity: 1;
             color: var(--gold);
-            padding: 12px 40px;
-            font-size: 1rem;
+            transform: scale(1.2);
+        }
+
+        /* Floating Petals */
+        .petal {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(135deg, #ffb7c5, #ff69b4);
+            border-radius: 150% 0 150% 0;
+            pointer-events: none;
+            z-index: 5;
+            animation: fall linear forwards;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* ==========================================
+           DOVE RELEASE SECTION
+        ========================================== */
+        .tribute-section {
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dove-container {
+            position: relative;
+            height: 400px;
+            margin: 50px 0;
+        }
+
+        .dove {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0.9;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: fly 15s linear infinite;
+        }
+
+        .dove::before, .dove::after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .dove::before {
+            width: 40px; height: 60px;
+            left: -20px; top: 10px;
+            transform: rotate(-30deg);
+        }
+
+        .dove::after {
+            width: 40px; height: 60px;
+            right: -20px; top: 10px;
+            transform: rotate(30deg);
+        }
+
+        @keyframes fly {
+            0% { transform: translate(-100px, 200px) scale(0.5); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(calc(100vw + 100px), -100px) scale(1.2); opacity: 0; }
+        }
+
+        .release-btn {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 20px 50px;
+            font-size: 1.2rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 3px;
             cursor: pointer;
-            transition: 0.4s;
-            border-radius: 5px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .load-btn:hover {
+        .release-btn:hover {
             background: var(--gold);
-            color: #000;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            color: var(--midnight);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+            transform: translateY(-3px);
         }
 
+        /* ==========================================
+           FOOTER
+        ========================================== */
         footer {
             text-align: center;
-            padding: 40px;
-            border-top: 1px solid var(--glass-border);
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+        }
+
+        .footer-text {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-sub {
+            color: var(--rose);
+            font-size: 1rem;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .grid { grid-template-columns: 1fr; }
+            .cards-container { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+            .flame-container { transform: scale(0.8); bottom: 20px; left: 20px; }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--midnight);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-text {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            animation: pulse 2s infinite;
         }
     </style>
 </head>
 <body>
 
-    <div class="stars" id="stars"></div>
-
-    <header>
-        <!-- Personalized Header -->
-        <h1>রাইসার মায়ের স্মরণে</h1>
-        <p class="subtitle">ভালোবাসা ও স্মৃতির এক অনন্ত পথচলা</p>
-        
-        <div style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">
-            Total Quotes: <span id="totalCount" style="color: var(--gold);">0</span>
-        </div>
-
-        <div class="filters">
-            <button class="filter-btn active" onclick="filterCaptions('all')">সব ক্যাপশন</button>
-            <button class="filter-btn" onclick="filterCaptions('ma')">মা (Mother)</button>
-            <button class="filter-btn" onclick="filterCaptions('ma-meye')">মা ও রাইসা</button>
-            <button class="filter-btn" onclick="filterCaptions('sad')">স্মৃতি ও শোক</button>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="grid" id="captionGrid">
-            <!-- Captions will be inserted here by JS -->
-        </div>
-
-        <div class="load-more-container">
-            <button class="load-btn" onclick="loadMore()">আরও দেখুন</button>
-        </div>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-text">রাইসার মা...</div>
     </div>
 
+    <!-- Background Universe -->
+    <div class="universe" id="universe"></div>
+
+    <!-- Eternal Flame -->
+    <div class="flame-container" onclick="toggleFlame()" title="Click to pray">
+        <div class="candle">
+            <div class="wax"></div>
+            <div class="flame" id="eternalFlame"></div>
+        </div>
+        <div class="flame-text">চিরঅনন্ত</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="https://kimi-web-img.moonshot.cn/img/i.etsystatic.com/dec5d3ac93eede4108c4d6fe3e86237d7f0939e1.jpg" alt="Angel Wings" class="angel-wings">
+        
+        <div class="hero-content">
+            <div class="memorial-badge">IN LOVING MEMORY</div>
+            <h1>
+                <span style="font-size: 0.6em; opacity: 0.8;">রাইসার প্রিয়</span>
+                <span class="highlight">মায়ের স্মরণে</span>
+            </h1>
+            <p class="subtitle">"মা চলে গেছেন, কিন্তু তাঁর ভালোবাসা চিরদিন রাইসার সাথে আছে"</p>
+            <div class="dates">১৯৮০ - ২০২৪</div>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Memory Section -->
+    <section class="memory-section">
+        <div class="section-header">
+            <h2 class="section-title">স্মৃতির পাতা</h2>
+            <p class="section-desc">মায়ের কথা, মায়ের শিক্ষা, এবং মায়ের ভালোবাসা - সবকিছু এই পাতায় সংরক্ষিত</p>
+        </div>
+
+        <div class="filter-tabs">
+            <button class="tab active" onclick="filterCards('all')">সব স্মৃতি</button>
+            <button class="tab" onclick="filterCards('ma')">মায়ের কথা</button>
+            <button class="tab" onclick="filterCards('bond')">মা-মেয়ের বন্ধন</button>
+            <button class="tab" onclick="filterCards('lessons')">জীবনের শিক্ষা</button>
+        </div>
+
+        <div class="cards-container" id="cardsContainer">
+            <!-- Cards will be generated by JS -->
+        </div>
+    </section>
+
+    <!-- Dove Release Section -->
+    <section class="tribute-section">
+        <h2 class="section-title">শান্তির প্রার্থনা</h2>
+        <p class="section-desc">একটি করে ফোঁটা আলো পাঠান রাইসার মায়ের আত্মার শান্তির জন্য</p>
+        
+        <div class="dove-container" id="doveContainer"></div>
+        
+        <button class="release-btn" onclick="releaseDove()">
+            <i class="fas fa-dove" style="margin-right: 10px;"></i>
+            শান্তি কামনা করুন
+        </button>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>রাইসার মায়ের স্মৃতি সবসময় অমর হয়ে থাকবে।</p>
+        <div class="footer-text">রাইসার মা সবসময় অমর</div>
+        <div class="footer-sub">"ভালোবাসা কখনো মরে না, শুধু রূপান্তরিত হয়"</div>
+        
+        <div class="social-links">
+            <a href="#" title="Share Memory"><i class="fas fa-heart"></i></a>
+            <a href="#" title="Light Candle"><i class="fas fa-fire"></i></a>
+            <a href="#" title="Send Prayer"><i class="fas fa-praying-hands"></i></a>
+        </div>
+        
+        <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.6;">
+            এই মেমোরিয়াল রাইসার জন্য তৈরি ❤️
+        </p>
     </footer>
 
     <script>
         // ==========================================
-        // DATA: PERSONALIZED CAPTIONS FOR RAISA
+        // DATA: PREMIUM CAPTIONS FOR RAISA'S MOTHER
         // ==========================================
-        const baseCaptions = [
-            // Category: MA (General Mother)
-            { text: "মা সবসময় ভালোবাসার আর শান্তির নাম।\nরাইসার মায়ের শেখানো পথ আর আদর্শ আমাদের সাথে থাকে।\nতার স্মৃতি শক্তি হয়ে থাকবে।", cat: "ma" },
-            { text: "মায়ের ভালোবাসা জীবনের সবচেয়ে সুন্দর উপহার।\nএই ভালোবাসা কখনো হারিয়ে যায় না।\nমায়ের শিক্ষা রাইসাকে সবসময় পথ দেখাবে।", cat: "ma" },
-            { text: "মা ছিলেন রাইসার জীবনের আলো।\nতিনি সুন্দরভাবে বাঁচতে শিখিয়েছেন।\nতার শেখানো ভালোবাসা সবসময় সাথে থাকে।", cat: "ma" },
-            { text: "মা আমাদের জীবনের সবচেয়ে বড় আশীর্বাদ।\nতিনি সবসময় ভালো থাকার শিক্ষা দিয়ে যান।\nতার স্মৃতি রাইসার মনকে শক্ত রাখে।", cat: "ma" },
-            { text: "পৃথিবীর সব সুখ এক দিকে,\nরাইসার মায়ের কোলের শান্তি আরেক দিকে।\nএই শান্তির কোনো তুলনা হয় না।", cat: "ma" },
-            { text: "মায়ের হাতের রান্না আর মুখের হাসি,\nএই দুটো জিনিসই জীবনকে স্বর্গ বানায়।\nমা তুমি সেরা ছিলে, সেরা থাকবে।", cat: "ma" },
-            { text: "যেখানে মা থাকে না,\nসেখানেও মায়ের দোয়া ছায়ার মতো থাকে।\nমা মানেই অদৃশ্য এক শক্তি।", cat: "ma" },
-            { text: "মায়ের শাসন ছিল ভালোবাসার অন্য নাম।\nআজ সেই শাসন নেই, কিন্তু শিক্ষা আছে।\nমায়ের দেখানো পথেই আমরা চলি।", cat: "ma" },
-            { text: "ঈশ্বর সব জায়গায় থাকতে পারেন না,\nতাই তিনি মা তৈরি করেছেন।\nরাইসার মা ছিলেন ঈশ্বরের দেওয়া শ্রেষ্ঠ উপহার।", cat: "ma" },
-            { text: "মায়ের পায়ের নিচে সন্তানের বেহেশত।\nমায়ের সেবাতেই জীবনের প্রকৃত সুখ।\nমা ভালো থেকো ওপারে।", cat: "ma" },
-            { text: "মায়ের আঁচল ছিল পৃথিবীর সবচেয়ে নিরাপদ স্থান।\nসেখানে কোনো ভয় বা চিন্তা ছিল না।\nআজও সেই নিরাপত্তা খুঁজি।", cat: "ma" },
+        const memories = [
+            // মায়ের কথা (About Mother)
+            { text: "মা ছিলেন রাইসার প্রথম গুরু, প্রথম বন্ধু, এবং চিরন্তন ভালোবাসার উৎস। তাঁর শিক্ষা আজও রাইসার পথ দেখায়।", cat: "ma", icon: "🕯️" },
+            { text: "মায়ের হাতের ছোঁয়ায় রান্না হোক বা জীবন - সবকিছুতেই ছিল এক অদ্ভুত মায়া। সেই মায়া আজও রাইসার মনে ভাসে।", cat: "ma", icon: "👐" },
+            { text: "মা বলতেন, 'কঠিন সময়ে মাথা উঁচু করে দাঁড়া'। রাইসা আজও সেই কথা মনে করে শক্তি পায়।", cat: "ma", icon: "💪" },
+            { text: "মায়ের আঁচল ছিল পৃথিবীর সবচেয়ে নিরাপদ স্থান। সেই আঁচলের নিরাপত্তা আজও রাইসার স্মৃতিতে জীবন্ত।", cat: "ma", icon: "🛡️" },
+            { text: "মা শিখিয়েছিলেন কীভাবে অন্যের কষ্ট বুঝতে হয়। সেই সহানুভূতিই রাইসার সবচেয়ে বড় সম্পদ।", cat: "ma", icon: "❤️" },
+            { text: "মায়ের গলার হাসি ছিল রাইসার সকালের আলো। সেই হাসি এখনও কানে বাজে।", cat: "ma", icon: "☀️" },
+            { text: "মা বলতেন, 'নারীর শক্তি তাঁর সহনশীলতায়'। রাইসা আজ সেই শক্তি নিয়ে এগিয়ে চলেছে।", cat: "ma", icon: "🌸" },
+            { text: "মায়ের কাছে রাইসা শিখেছে যে ভালোবাসা শর্তহীন হতে হয়। এই শিক্ষা আজও তাঁর জীবনের মূলমন্ত্র।", cat: "ma", icon: "💎" },
             
-            // Category: MA-MEYE (Mother & Raisa Personalized)
-            { text: "মা আর রাইসার সম্পর্ক খুব গভীর আর সুন্দর।\nমায়ের ভালোবাসা রাইসার জীবনের পথ দেখায়।\nএই সম্পর্ক সময়ের সাথে আরও শক্ত হয়।", cat: "ma-meye" },
-            { text: "রাইসা মায়ের কাছ থেকেই জীবন শিখেছে।\nমায়ের আদর্শ আর ভালোবাসা তাকে শক্ত করে।\nএই শিক্ষা সারাজীবন পাশে থাকে।", cat: "ma-meye" },
-            { text: "মা ছিলেন রাইসার প্রথম বন্ধু আর শিক্ষক।\nএই বন্ধন বিশ্বাস আর ভালোবাসায় ভরা।\nএটা সবসময় হৃদয়ে জায়গা করে থাকে।", cat: "ma-meye" },
-            { text: "মা রাইসাকে শুধু বড় করেননি।\nজীবন কীভাবে সুন্দর করতে হয় তা শিখিয়েছেন।\nএই শিক্ষা কখনো হারিয়ে যায় না।", cat: "ma-meye" },
-            { text: "মায়ের ভালোবাসা রাইসার শক্তি হয়ে থাকে।\nমায়ের আদর্শ রাইসাকে সাহসী করে তোলে।\nএই সম্পর্ক চিরদিন হৃদয়ে থাকে।", cat: "ma-meye" },
-            { text: "রাইসা তার মায়ের প্রতিচ্ছবি।\nআয়নায় তাকালে তোমাকে দেখি মা।\nতুমি আছো আমার সত্ত্বা জুড়ে।", cat: "ma-meye" },
-            { text: "মায়ের শাড়ি আর মায়ের গন্ধ,\nরাইসার কাছে সেরা স্মৃতির ভান্ডার।\nএই স্মৃতিগুলোই বেঁচে থাকার রসদ।", cat: "ma-meye" },
-            { text: "সবাই ছেড়ে গেলেও মা ছাড়ে না।\nরাইসার চোখের জল শুধু মা বুঝতেন।\nমায়ের কোলেই সব কষ্ট মুছে যেত।", cat: "ma-meye" },
-            { text: "মা ও মেয়ের গল্প কখনো শেষ হয় না।\nপ্রজন্ম থেকে প্রজন্মে এই ভালোবাসা বয়।\nমা তুমি ছিলে রাইসার সেরা বান্ধবী।", cat: "ma-meye" },
-            { text: "রাইসার সব আবদার ছিল মায়ের কাছে।\nমা না করলে কেউ আর শোনে না।\nতোমার শূন্যতা কেউ পূরণ করবে না মা।", cat: "ma-meye" },
-            { text: "বড় হয়েছি, কিন্তু মায়ের কাছে,\nরাইসা আজও সেই ছোট মেয়েটিই আছে।\nমায়ের আদরের কোনো বয়স নেই।", cat: "ma-meye" },
-            { text: "মা শিখিয়েছেন কীভাবে মাথা উঁচু করে বাঁচতে হয়।\nনারীর শক্তি আর মমতা মায়ের দান।\nতোমার রাইসা হার মানতে শেখেনি মা।", cat: "ma-meye" },
-            { text: "মায়ের ড্রেসিং টেবিল, মায়ের চুড়ি,\nসব কিছুতে মিশে আছে মায়ের স্পর্শ।\nএগুলো রাইসার কাছে শুধু বস্তু নয়, আবেগ।", cat: "ma-meye" },
+            // মা-মেয়ের বন্ধন (Mother-Daughter Bond)
+            { text: "মা ও রাইসার সম্পর্ক ছিল বন্ধন নয়, ছিল দুটি আত্মার মিলন। সেই মিলন আজও অটুট।", cat: "bond", icon: "🔗" },
+            { text: "রাইসার চোখের জল শুধু মা বুঝতেন। মায়ের কোলেই সব কষ্ত মুছে যেত। সেই কোলের শূন্যতা আজও অনুভব করি।", cat: "bond", icon: "😢" },
+            { text: "মা ছিলেন রাইসার আয়না। আয়নায় তাকালে মায়ের ছায়া দেখি। তুমি আছো আমার সত্ত্বা জুড়ে।", cat: "bond", icon: "🪞" },
+            { text: "মায়ের শাড়ি, মায়ের গন্ধ, মায়ের গহনা - সব কিছুতেই মিশে আছে স্মৃতি। এগুলো শুধু বস্তু নয়, প্রাণের অংশ।", cat: "bond", icon: "👗" },
+            { text: "রাইসা যখন বড় সিদ্ধান্ত নেয়, মনে হয় মা কানে কানে বলছেন। সেই আত্মীয় উপস্থিতি আশীর্বাদ।", cat: "bond", icon: "👂" },
+            { text: "মা-মেয়ের গল্প কখনো শেষ হয় না। প্রজন্ম থেকে প্রজন্মে এই ভালোবাসা বয়ে চলে। তুমি ছিলে আমার সেরা বান্ধবী।", cat: "bond", icon: "📖" },
+            { text: "রাইসার সব আবদার ছিল মায়ের কাছে। মা না করলে কেউ শুনত না। তোমার শূন্যতা কেউ পূরণ করতে পারবে না।", cat: "bond", icon: "🙏" },
+            { text: "বড় হয়েছি, কিন্তু মায়ের কাছে রাইসা আজও সেই ছোট মেয়েটিই। মায়ের আদরের কোনো বয়স হয় না।", cat: "bond", icon: "👧" },
             
-            // Category: SAD (Memory)
-            { text: "প্রিয় মানুষগুলো আমাদের জীবনে ভালোবাসা রেখে যায়।\nরাইসার মায়ের স্মৃতি আমাদের শক্তি দেয়।\nএই স্মৃতিগুলো সবসময় মূল্যবান।", cat: "sad" },
-            { text: "জীবনে কিছু মানুষ কখনো ভুলে যাওয়া যায় না।\nতাদের ভালোবাসা সবসময় মনে থাকে।\nসেই ভালোবাসাই রাইসাকে পথ দেখায়।", cat: "sad" },
-            { text: "সুন্দর মানুষগুলো সবসময় হৃদয়ে থাকে।\nতাদের আদর্শ আর শিক্ষা আমাদের শক্তি দেয়।\nতাদের স্মৃতি ভালোবাসায় ভরা থাকে।", cat: "sad" },
-            { text: "ভালো মানুষ কখনো হারিয়ে যায় না।\nতারা থেকে যায় স্মৃতি আর ভালোবাসায়।\nরাইসার মায়ের ভালোবাসা সবসময় শান্তি দেবে।", cat: "sad" },
-            { text: "প্রিয় মানুষের স্মৃতি জীবনের মূল্যবান অংশ।\nতাদের ভালোবাসা সবসময় মনে থাকে।\nএই স্মৃতি রাইসাকে শক্ত করে তোলে।", cat: "sad" },
-            { text: "আজ আকাশটা অনেক বড়,\nকিন্তু রাইসার পৃথিবীটা আজ শূন্য।\nতোমাকে ছাড়া সব কিছুই অচেনা লাগে।", cat: "sad" },
-            { text: "চলে যাওয়া মানেই প্রস্থান নয়।\nস্মৃতিতে তুমি আছো উজ্জ্বল নক্ষত্র হয়ে।\nপ্রতি রাতে আকাশের দিকে তাকিয়ে তোমাকে খুঁজি।", cat: "sad" },
-            { text: "কান্না চেপে হাসি মুখে থাকি,\nযাতে তুমি কষ্ট না পাও ওপারে।\nকিন্তু বুকের ভেতরটা হাহাকার করে।", cat: "sad" },
-            { text: "তোমার শূন্য চেয়ারটা আজও আছে।\nশুধু তুমি নেই সেখানে।\nঘরভর্তি মানুষ, তবুও আমি একা।", cat: "sad" },
-            { text: "মৃত্যু মানুষকে কেড়ে নেয়,\nকিন্তু সম্পর্ককে কেড়ে নিতে পারে না।\nরাইসার সাথে তোমার আত্মার বাঁধন অটুট।", cat: "sad" },
-            { text: "মাঝে মাঝে খুব ইচ্ছে করে,\nযদি একবার তোমাকে ডাকতে পারতাম।\nযদি একবার শুনতে পেতাম তোমার গলা।", cat: "sad" },
-            { text: "বিদায় শব্দটি খুব কষ্টের।\nকিন্তু বাস্তবতা মেনে নিতেই হয়।\nদোয়া করি ওপারে ভালো থেকো মা।", cat: "sad" },
-            { text: "চোখের জল শুকিয়ে গেছে,\nকিন্তু হৃদয়ের রক্তক্ষরণ থামেনি।\nতোমার স্মৃতি আমাকে প্রতি মুহূর্তে কাঁদায়।", cat: "sad" }
+            // জীবনের শিক্ষা (Life Lessons)
+            { text: "মা শিখিয়েছেন কীভাবে মাথা উঁচু করে বাঁচতে হয়। নারীর শক্তি আর মমতা মায়ের দান। তোমার রাইসা হার মানেনি।", cat: "lessons", icon: "👑" },
+            { text: "মা বলতেন, 'জীবনে পতন হবে, কিন্তু উঠে দাঁড়ানোটাই গুরুত্বপূর্ণ'। রাইসা সেই শিক্ষায় চলছে।", cat: "lessons", icon: "🌱" },
+            { text: "মায়ের কাছ থেকে রাইসা শিখেছে যে কঠিন পরিস্থিতিতেও হাসি ধরে রাখা শক্তির পরিচয়।", cat: "lessons", icon: "😊" },
+            { text: "মা শিখিয়েছিলেন পরিবারের মূল্য। রাইসা আজ সেই শিক্ষা নিয়ে নিজের পরিবার গড়ে তুলছে।", cat: "lessons", icon: "🏠" },
+            { text: "মা বলতেন, 'সত্য ও ন্যায়ের পথে চলো, ফল ভগবান দেখবেন'। এই বিশ্বাসই রাইসার মেরুদণ্ড।", cat: "lessons", icon: "⚖️" },
+            { text: "মায়ের শিক্ষা ছিল সবার প্রতি দয়া করো, কিন্তু নিজের সম্মান বিক্রি করো না।", cat: "lessons", icon: "🛡️" },
+            { text: "মা শিখিয়েছেন কীভাবে কষ্টকে শক্তিতে রূপান্তর করতে হয়। রাইসা আজ সেই শক্তি নিয়ে দাঁড়িয়ে আছে।", cat: "lessons", icon: "🔥" },
+            { text: "মা বলতেন, 'তোমার সন্তানের সবচেয়ে বড় উপহার হলো তোমার সময়'। রাইসা আজ সেই শিক্ষা অনুসরণ করে।", cat: "lessons", icon: "⏰" }
         ];
 
         // ==========================================
-        // GENERATE 200+ CAPTIONS (Using Logic)
+        // INITIALIZATION
         // ==========================================
-        let allCaptions = [...baseCaptions];
-        
-        // Duplicate to reach 200+ for demo
-        for(let i = 0; i < 5; i++) {
-            baseCaptions.forEach(item => {
-                allCaptions.push({
-                    text: item.text,
-                    cat: item.cat,
-                    id: Math.random()
-                });
-            });
-        }
-        allCaptions.sort(() => Math.random() - 0.5);
-
-        // ==========================================
-        // RENDER LOGIC
-        // ==========================================
-        const grid = document.getElementById('captionGrid');
-        const loadBtn = document.querySelector('.load-btn');
-        const totalCountSpan = document.getElementById('totalCount');
-        
-        let displayedCount = 0;
-        let itemsPerPage = 12;
         let currentFilter = 'all';
-        let filteredCaptions = [];
+        let flameLit = true;
 
-        function init() {
-            filteredCaptions = allCaptions;
-            totalCountSpan.innerText = allCaptions.length;
-            renderItems();
-        }
-
-        function filterCaptions(category) {
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            currentFilter = category;
-            displayedCount = 0;
-            grid.innerHTML = ''; 
-
-            if(category === 'all') {
-                filteredCaptions = allCaptions;
-            } else {
-                filteredCaptions = allCaptions.filter(item => item.cat === category);
-            }
-            renderItems();
-        }
-
-        function renderItems() {
-            const nextBatch = filteredCaptions.slice(displayedCount, displayedCount + itemsPerPage);
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1500);
             
-            if(nextBatch.length === 0 && displayedCount === 0) {
-                grid.innerHTML = '<p style="color:white; text-align:center; width:100%;">কোনো তথ্য পাওয়া যায়নি।</p>';
-                loadBtn.style.display = 'none';
-                return;
-            }
+            createStars();
+            renderCards();
+            startPetalRain();
+        });
 
-            nextBatch.forEach((item, index) => {
-                const card = document.createElement('div');
-                card.className = `card theme-${item.cat}`;
-                card.style.animationDelay = `${index * 0.1}s`;
-
-                let icon = '';
-                if(item.cat === 'ma') icon = '<i class="fas fa-heart"></i>';
-                else if(item.cat === 'ma-meye') icon = '<i class="fas fa-female"></i> <i class="fas fa-child"></i>';
-                else icon = '<i class="fas fa-dove"></i>';
-
-                card.innerHTML = `
-                    <div>
-                        <div class="card-icon">${icon}</div>
-                        <p class="quote">${item.text.replace(/\n/g, '<br>')}</p>
-                    </div>
-                    <div class="card-footer">
-                        <span>#${item.cat === 'ma-meye' ? 'RAISA-MA' : item.cat.toUpperCase()}</span>
-                        <button class="copy-btn" onclick="copyText(this)">
-                            <i class="far fa-copy"></i> Copy
-                        </button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-
-            displayedCount += nextBatch.length;
-            if(displayedCount >= filteredCaptions.length) loadBtn.style.display = 'none';
-            else loadBtn.style.display = 'inline-block';
-        }
-
-        function loadMore() { renderItems(); }
-
-        function copyText(btn) {
-            const text = btn.parentElement.parentElement.querySelector('.quote').innerText;
-            navigator.clipboard.writeText(text);
-            const originalIcon = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-check"></i> Copied';
-            btn.style.color = '#d4af37';
-            setTimeout(() => { btn.innerHTML = originalIcon; btn.style.color = ''; }, 2000);
-        }
-
+        // Create Stars
         function createStars() {
-            const starContainer = document.getElementById('stars');
-            for(let i=0; i<50; i++) {
+            const universe = document.getElementById('universe');
+            for (let i = 0; i < 200; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.left = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 5 + 's';
-                star.style.animationDuration = Math.random() * 5 + 5 + 's';
+                star.style.top = Math.random() * 100 + '%';
                 star.style.width = star.style.height = Math.random() * 3 + 'px';
-                starContainer.appendChild(star);
+                star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+                star.style.animationDelay = Math.random() * 5 + 's';
+                universe.appendChild(star);
+            }
+
+            // Shooting stars
+            setInterval(() => {
+                const shooting = document.createElement('div');
+                shooting.className = 'shooting-star';
+                shooting.style.top = Math.random() * 50 + '%';
+                shooting.style.left = '0';
+                universe.appendChild(shooting);
+                setTimeout(() => shooting.remove(), 3000);
+            }, 5000);
+        }
+
+        // ==========================================
+        // CARD RENDERING
+        // ==========================================
+        function renderCards() {
+            const container = document.getElementById('cardsContainer');
+            container.innerHTML = '';
+            
+            const filtered = currentFilter === 'all' 
+                ? memories 
+                : memories.filter(m => m.cat === currentFilter);
+
+            filtered.forEach((memory, index) => {
+                const card = document.createElement('div');
+                card.className = 'memory-card';
+                card.style.animationDelay = (index * 0.1) + 's';
+                
+                card.innerHTML = `
+                    <div class="card-icon">${memory.icon}</div>
+                    <div class="card-content">${memory.text}</div>
+                    <div class="card-meta">
+                        <span class="card-tag">${getCategoryName(memory.cat)}</span>
+                        <div class="card-actions">
+                            <button class="action-btn" onclick="copyMemory('${memory.text}')" title="Copy">
+                                <i class="far fa-copy"></i>
+                            </button>
+                            <button class="action-btn" onclick="likeMemory(this)" title="Love">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+                
+                // Staggered animation
+                setTimeout(() => card.classList.add('visible'), index * 100);
+            });
+        }
+
+        function getCategoryName(cat) {
+            const names = { 'ma': 'মা', 'bond': 'বন্ধন', 'lessons': 'শিক্ষা' };
+            return names[cat] || cat;
+        }
+
+        function filterCards(category) {
+            currentFilter = category;
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            renderCards();
+        }
+
+        // ==========================================
+        // INTERACTIONS
+        // ==========================================
+        function copyMemory(text) {
+            navigator.clipboard.writeText(text);
+            showToast('স্মৃতি কপি হয়েছে');
+        }
+
+        function likeMemory(btn) {
+            const icon = btn.querySelector('i');
+            if (icon.classList.contains('far')) {
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                icon.style.color = '#ff006e';
+                
+                // Create mini hearts
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => createMiniHeart(btn), i * 100);
+                }
             }
         }
 
-        createStars();
-        init();
+        function createMiniHeart(element) {
+            const rect = element.getBoundingClientRect();
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = rect.left + rect.width/2 + 'px';
+            heart.style.top = rect.top + 'px';
+            heart.style.fontSize = '1.2rem';
+            heart.style.pointerEvents = 'none';
+            heart.style.animation = 'float-up 1s ease-out forwards';
+            heart.style.zIndex = '9999';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--gold);
+                color: var(--midnight);
+                padding: 15px 30px;
+                border-radius: 30px;
+                font-weight: 600;
+                z-index: 10000;
+                animation: fadeInUp 0.3s ease;
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        }
+
+        // ==========================================
+        // PETAL RAIN
+        // ==========================================
+        function startPetalRain() {
+            setInterval(() => {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                petal.style.opacity = Math.random() * 0.6 + 0.2;
+                document.body.appendChild(petal);
+                setTimeout(() => petal.remove(), 13000);
+            }, 2000);
+        }
+
+        // ==========================================
+        // DOVE RELEASE
+        // ==========================================
+        function releaseDove() {
+            const container = document.getElementById('doveContainer');
+            const dove = document.createElement('div');
+            dove.className = 'dove';
+            dove.style.top = Math.random() * 200 + 'px';
+            container.appendChild(dove);
+            
+            showToast('আপনার প্রার্থনা পাঠানো হয়েছে 🕊️');
+            
+            setTimeout(() => dove.remove(), 15000);
+        }
+
+        // ==========================================
+        // FLAME & MUSIC
+        // ==========================================
+        function toggleFlame() {
+            const flame = document.getElementById('eternalFlame');
+            flameLit = !flameLit;
+            flame.style.opacity = flameLit ? '1' : '0.3';
+            if (flameLit) showToast('চিরঅনন্ত শিখা জ্বলছে 🕯️');
+        }
+
+        // Scroll Animation
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.memory-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    card.classList.add('visible');
+                }
+            });
+        });
     </script>
 </body>
 </html>
